@@ -7,11 +7,11 @@ public abstract class Enemy : MonoBehaviour {
 	protected Collider2D enemyCollider;
     protected Collider2D playerCollider;
 
-	protected int speed;
+	protected float speed;
 
 	#region accessors
 	// ENCAPSULATION -- only children class can set the speed
-	public int Speed {
+	public float Speed {
 		get { return speed; }
 		set { speed = value; }
 	}

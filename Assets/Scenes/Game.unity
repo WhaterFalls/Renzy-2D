@@ -1030,7 +1030,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 2071673080}
   scoreText: {fileID: 1996758976}
-  highScoreText: {fileID: 0}
   gameOver: 0
 --- !u!4 &770429779
 Transform:
@@ -1273,7 +1272,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPoolSize: 5
-  EnemyPrefab: {fileID: 1209331586739636, guid: efea3b6234b9146109295f26a01f1c46, type: 3}
+  EnemyPrefab:
+  - {fileID: 1209331586739636, guid: efea3b6234b9146109295f26a01f1c46, type: 3}
+  - {fileID: 1209331586739636, guid: 09091a99970c9524b99ac53d1f71fce9, type: 3}
   spawnRate: 0.5
 --- !u!4 &1687469858
 Transform:

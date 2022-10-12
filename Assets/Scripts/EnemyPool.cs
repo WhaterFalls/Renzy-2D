@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyPool : MonoBehaviour
 {
 	public int enemyPoolSize = 5;
-	public GameObject EnemyPrefab;
+	[SerializeField]
+	GameObject[] EnemyPrefab = new GameObject[2];
 	public float spawnRate = .5f;
 
 	private GameObject[] enemies;
@@ -17,7 +18,8 @@ public class EnemyPool : MonoBehaviour
 	void Start () {
 		enemies = new GameObject[enemyPoolSize];
 		for (int i = 0; i < enemyPoolSize; i++) {
-			enemies[i] = (GameObject) Instantiate(EnemyPrefab, objectPoolPosition, Quaternion.identity);
+			int rand = Random.Range(0, 2);
+			enemies[i] = (GameObject) Instantiate(EnemyPrefab[rand], objectPoolPosition, Quaternion.identity);
 		}
 	}
 
