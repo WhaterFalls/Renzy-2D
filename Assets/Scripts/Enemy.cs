@@ -24,6 +24,41 @@ public abstract class Enemy : MonoBehaviour {
 		playerCollider = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PolygonCollider2D>();
 	}
 
+	// enemy can spawn on player's left or right side, need to make sure they face the player
+	public void FacePlayer()
+    {
+		CheckAndFlip();
+    }
+
+	// move enemy towards player
+	public void Attack()
+    {
+		float direction = 1;
+		if (transform.position.x > 0)
+        {
+			direction = -1;
+			
+		}
+		rigby.velocity = new Vector2(direction * speed, 0);
+
+	}
+
+	// Check if enemy is on left or right side and flip accordingly
+	void CheckAndFlip()
+	{
+		if (transform.position.x > 0 & transform.localScale.x > 0)
+			Flip();
+		else if (transform.position.x < 0 & transform.localScale.x < 0)
+			Flip();
+	}
+
+	void Flip()
+	{
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
+
 	protected void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.name == "Sword")
