@@ -36,9 +36,11 @@ public class EnemyPool : MonoBehaviour
 			else if (rand == 1)
 				factor = 1;
 			enemies [currentEnemy].transform.position = new Vector2 (factor * spawnXPosition, -3.43f);
-			CheckAndFlip (enemies[currentEnemy]);
+
+			// ABSTRACTION -- enemy pool only needs to spawn enemies, enemy class has public functions such as face the player and attack
 			Enemy enemy = enemies[currentEnemy].GetComponent<Enemy>();
-			enemies [currentEnemy].GetComponent<Rigidbody2D> ().velocity = new Vector2 (-factor * enemy.Speed, 0);
+			enemy.FacePlayer();
+			enemy.Attack();
 			currentEnemy++;
 			if (currentEnemy % enemyPoolSize == 0) {
 				currentEnemy = 0;
@@ -49,18 +51,5 @@ public class EnemyPool : MonoBehaviour
 				enemies [i].GetComponent<Animator> ().SetTrigger ("Idle");
 			}
 		}
-	}
-
-	void CheckAndFlip(GameObject g) {
-		if (g.transform.position.x > 0 & g.transform.localScale.x > 0)
-			Flip (g);
-		else if (g.transform.position.x < 0 & g.transform.localScale.x < 0)
-			Flip (g);
-	}
-
-	void Flip(GameObject g){
-		Vector3 theScale = g.transform.localScale;
-		theScale.x *= -1;
-		g.transform.localScale = theScale;
 	}
 }
