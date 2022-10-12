@@ -83,4 +83,9 @@ public class SessionManager : MonoBehaviour
         PlayerPrefs.SetString("High Score Player", "");
         highScoreText.text = "High Score: 0\nBy: ";
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

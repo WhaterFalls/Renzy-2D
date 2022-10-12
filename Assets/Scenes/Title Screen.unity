@@ -152,8 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c120b5a7703984fa6cc318024f9c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highScore: 0
-  highScoreText: {fileID: 968464485}
 --- !u!4 &211858105
 Transform:
   m_ObjectHideFlags: 0
@@ -655,7 +653,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 728294072}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 211858104}
+        m_TargetAssemblyTypeName: SessionManager, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &728294072
 MonoBehaviour:
   m_ObjectHideFlags: 0
