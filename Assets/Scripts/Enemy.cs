@@ -2,25 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
-	private Rigidbody2D rigby;
-	private Collider2D enemyCollider;
-	private Collider2D playerCollider;
+public abstract class Enemy : MonoBehaviour {
+	protected Rigidbody2D rigby;
+	protected Collider2D enemyCollider;
+    protected Collider2D playerCollider;
 
-	// Use this for initialization
-	void Start () {
-		rigby = GetComponent<Rigidbody2D> ();
-		enemyCollider = GetComponent<PolygonCollider2D> ();
-		playerCollider = GameObject.FindGameObjectsWithTag ("Player") [0].GetComponent<PolygonCollider2D> ();
+	protected int speed;
+
+	#region accessors
+	// ENCAPSULATION -- only children class can set the speed
+	public int Speed {
+		get { return speed; }
+		set { speed = value; }
+	}
+    #endregion
+
+    protected void Start()
+	{
+		rigby = GetComponent<Rigidbody2D>();
+		enemyCollider = GetComponent<PolygonCollider2D>();
+		playerCollider = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PolygonCollider2D>();
 	}
 
-	private void OnTriggerEnter2D(Collider2D other){
-		if (other.name == "Sword"){
-			if (!enemyCollider.IsTouching (playerCollider)){
-				GameControl.instance.PlayerScored ();
+	protected void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.name == "Sword")
+		{
+			if (!enemyCollider.IsTouching(playerCollider))
+			{
+				GameControl.instance.PlayerScored();
 				rigby.velocity = Vector2.zero;
-				//			anim.SetTrigger ("Die");
-				this.transform.position = new Vector2 (-15f, -25f);
+				this.transform.position = new Vector2(-15f, -25f);
 			}
 		}
 	}
